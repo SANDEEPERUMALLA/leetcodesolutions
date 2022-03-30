@@ -18,7 +18,7 @@ public class KthLargestElementInAnArray {
                 minHeap.poll();
             }
         }
-        return minHeap.poll();
+        return minHeap.peek();
     }
 
     public static void main(String[] args) {
