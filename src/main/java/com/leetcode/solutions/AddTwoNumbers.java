@@ -6,46 +6,36 @@ package com.leetcode.solutions;
  */
 public class AddTwoNumbers {
 
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode n1 = l1;
-        ListNode n2 = l2;
-        int carry = 0;
-        int sum = n1.val + n2.val + carry;
+    public ListNode addTwoNumbers(ListNode n1, ListNode n2) {
+
+        int sum = n1.val + n2.val;
         int val = sum % 10;
-        carry = sum / 10;
+        int carry = sum / 10;
         ListNode head = new ListNode(val);
         ListNode last = head;
         n1 = n1.next;
         n2 = n2.next;
-        while (n1 != null && n2 != null) {
-            sum = n1.val + n2.val + carry;
+
+        while (n1 != null || n2 != null) {
+            sum = 0;
+            if (n1 != null) {
+                sum += n1.val;
+                n1 = n1.next;
+            }
+
+            if (n2 != null) {
+                sum += n2.val;
+                n2 = n2.next;
+            }
+
+            sum += carry;
             val = sum % 10;
             carry = sum / 10;
             ListNode node = new ListNode(val);
             last = addNodeToList(last, node);
-            n1 = n1.next;
-            n2 = n2.next;
         }
 
-        while (n1 != null) {
-            sum = n1.val + carry;
-            val = sum % 10;
-            carry = sum / 10;
-            ListNode node = new ListNode(val);
-            last = addNodeToList(last, node);
-            n1 = n1.next;
-        }
-
-        while (n2 != null) {
-            sum = n2.val + carry;
-            val = sum % 10;
-            carry = sum / 10;
-            ListNode node = new ListNode(val);
-            last = addNodeToList(last, node);
-            n2 = n2.next;
-        }
-
-        if(carry > 0) {
+        if (carry > 0) {
             last.next = new ListNode(carry);
         }
 
@@ -70,10 +60,10 @@ public class AddTwoNumbers {
         solution.print(result);
     }
 
-    private ListNode createList(int ... nums) {
+    private ListNode createList(int... nums) {
         ListNode head = new ListNode(nums[0]);
         ListNode last = head;
-        for(int i=1;i<nums.length;i++) {
+        for (int i = 1; i < nums.length; i++) {
             ListNode node = new ListNode(nums[i]);
             last = addNodeToList(last, node);
         }
