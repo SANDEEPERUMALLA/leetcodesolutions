@@ -33,12 +33,11 @@ public class StringCompression {
         if (count > 1) {
             if (count > 9) {
                 chars[index++] = currentCh;
-                int c = reverse(count);
-                while (c >= 9) {
-                    chars[index++] = Character.forDigit(c % 10, 10);
-                    c = c / 10;
+                String c = String.valueOf(count);
+                for (int i = 0; i < c.length(); i++) {
+                    chars[index++] = Character.forDigit(Integer.parseInt(String.valueOf(c.charAt(i))), 10);
                 }
-                chars[index++] = Character.forDigit(c, 10);
+
             } else {
                 chars[index++] = currentCh;
                 chars[index++] = Character.forDigit(count, 10);
@@ -51,14 +50,14 @@ public class StringCompression {
         return index;
     }
 
-    public static int reverse(int count) {
-        int revNum = 0;
-        while (count != 0) {
-            revNum = (revNum * 10) + (count % 10);
-            count = count / 10;
-        }
-        return revNum;
-    }
+//    public static int reverse(int count) {
+//        int revNum = 0;
+//        while (count != 0) {
+//            revNum = (revNum * 10) + (count % 10);
+//            count = count / 10;
+//        }
+//        return revNum;
+//    }
 
     public static void main(String[] args) {
         StringCompression stringCompression = new StringCompression();
@@ -68,7 +67,7 @@ public class StringCompression {
         char[] chars1 = { 'a', 'a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b' };
         compressedLength = stringCompression.compress(chars1);
         System.out.println(compressedLength + " : " + new String(chars1));
-        char[] chars2 = { 'a', 'a', 'a', 'a', 'a', 'a',  'a', 'a',  'a', 'a'};
+        char[] chars2 = { 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a' };
         compressedLength = stringCompression.compress(chars2);
         System.out.println(compressedLength + " : " + new String(chars2));
     }
