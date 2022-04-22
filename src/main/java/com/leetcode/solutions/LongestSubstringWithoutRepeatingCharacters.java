@@ -1,9 +1,5 @@
 package com.leetcode.solutions;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
 /*
     3. Longest Substring Without Repeating Characters
     https://leetcode.com/problems/longest-substring-without-repeating-characters/
@@ -11,6 +7,11 @@ import java.util.Map;
 public class LongestSubstringWithoutRepeatingCharacters {
 
     public int lengthOfLongestSubstring(String s) {
+
+        if (s.isEmpty()) {
+            return 0;
+        }
+
         int[] charsCount = new int[256];
         int[] charsIndex = new int[256];
 
@@ -32,7 +33,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
                 }
                 int prevCharIndex = charsIndex[chIndex];
                 for (int i = start; i <= prevCharIndex; i++) {
-                    charsCount[s.charAt(j)]--;
+                    charsCount[s.charAt(i)]--;
                 }
                 start = prevCharIndex + 1;
             }
@@ -48,10 +49,10 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
     public static void main(String[] args) {
         LongestSubstringWithoutRepeatingCharacters longestSubstringWithoutRepeatingCharacters = new LongestSubstringWithoutRepeatingCharacters();
-        //System.out.println(longestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring("abcabcbb"));
-        //System.out.println(longestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring("bbbbb"));
+        System.out.println(longestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring("abcabcbb"));
+        System.out.println(longestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring("bbbbb"));
         System.out.println(longestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring("pwwkew"));
-        //System.out.println(longestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring("abababa"));
-    //    System.out.println(longestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring("abcdee"));
+        System.out.println(longestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring("abababa"));
+        System.out.println(longestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring("abcdee"));
     }
 }
