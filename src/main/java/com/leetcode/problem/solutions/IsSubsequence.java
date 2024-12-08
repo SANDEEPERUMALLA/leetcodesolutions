@@ -39,7 +39,7 @@ public class IsSubsequence {
                 if (j == s.length() - 1) {
                     return true;
                 }
-                currentChar = s.charAt(++j);
+                currentChar = s.charAt(j);
             }
         }
 
