@@ -64,5 +64,6 @@ public class CanPlaceFlowers {
 //        System.out.println(canPlaceFlowers.canPlaceFlowers(new int[]{1, 0, 0, 1, 0}, 1));
 //        System.out.println(canPlaceFlowers.canPlaceFlowers(new int[]{1}, 0));
         System.out.println(canPlaceFlowers.canPlaceFlowers(new int[]{0, 0}, 0));
+        System.out.println(canPlaceFlowers.canPlaceFlowers(new int[]{0}, 1));
     }
 }
